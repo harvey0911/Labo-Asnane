@@ -8,16 +8,8 @@ const Footer = () => {
 
                     {/* Brand & Map */}
                     <div className="lg:col-span-2">
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="bg-gradient-to-tr from-blue-600 to-cyan-400 p-2 rounded-xl text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-8 h-8">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-                                </svg>
-                            </div>
-                            <div className="flex flex-col leading-none">
-                                <span className="text-xl font-black text-white tracking-tight">Labo</span>
-                                <span className="text-base font-bold text-blue-500 tracking-wide">Asnane</span>
-                            </div>
+                        <div className="flex items-center mb-6">
+                            <img src="/logo.png" alt="Labo Asnane Logo" className="h-14 w-auto" />
                         </div>
                         <p className="text-slate-400 mb-8 max-w-sm">
                             Fournir des restaurations dentaires esthétiques et fonctionnelles haut de gamme avec une précision CAO-FAO de pointe.
@@ -91,12 +83,15 @@ const Footer = () => {
                         &copy; {new Date().getFullYear()} Labo Asnane. Tous droits réservés.
                     </p>
                     <div className="flex gap-4">
-                        {/* Social Icons Placeholder */}
-                        {['facebook', 'instagram', 'linkedin'].map((social) => (
-                            <a key={social} href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
-                                <div className="w-4 h-4 bg-current opacity-80" style={{ maskImage: `url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${social}.svg')`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${social}.svg')`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }}></div>
-                            </a>
-                        ))}
+                        <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
+                            <div className="w-4 h-4 bg-current opacity-80" style={{ maskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/facebook.svg')", maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/facebook.svg')", WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }}></div>
+                        </a>
+                        <a href="https://www.instagram.com/labo_asnane?igsh=MW5kd2hmZHJqbGJ2" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-gradient-to-tr hover:from-purple-500 hover:to-orange-500 hover:text-white transition-all">
+                            <div className="w-4 h-4 bg-current opacity-80" style={{ maskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg')", maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg')", WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }}></div>
+                        </a>
+                        <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-700 hover:text-white transition-all">
+                            <div className="w-4 h-4 bg-current opacity-80" style={{ maskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg')", maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg')", WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }}></div>
+                        </a>
                     </div>
                 </div>
             </div>

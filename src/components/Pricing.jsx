@@ -109,7 +109,7 @@ const Pricing = () => {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full filter blur-[100px] opacity-20 -z-0"></div>
                         <h4 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 relative z-10">
                             <span className="w-2 h-8 bg-blue-400 rounded-full inline-block"></span>
-                            Services Avancés (Barre, Gouttière, CAD-CAM)
+                            Services Avancés (Barre, Gouttière, exocad)
                         </h4>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
@@ -155,7 +155,7 @@ const Pricing = () => {
 
                             {/* CAD CAM */}
                             <div>
-                                <h5 className="text-blue-400 font-bold mb-4 border-b border-slate-700 pb-2">Support CAD-CAM</h5>
+                                <h5 className="text-blue-400 font-bold mb-4 border-b border-slate-700 pb-2">Support exocad</h5>
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-start">
                                         <span className="font-medium text-slate-200">Montage Totale Ivoclar<br /><span className="text-sm font-normal text-slate-400">Haut et bas</span></span>
