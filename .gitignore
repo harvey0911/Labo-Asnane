@@ -24,4 +24,7 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+
+# Large Assets
+src/assets/dental-decimated.stl
+

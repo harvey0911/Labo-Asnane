@@ -14,7 +14,6 @@ const PriceItem = ({ name, price, sub }) => (
 );
 
 const Pricing = () => {
-    // Pricing data from environment variables
     const prices = {
         fixed: {
             ceramoMetallic: import.meta.env.VITE_PRICE_FIXED_CERAMO_METALLIC || "300",
@@ -62,7 +61,6 @@ const Pricing = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
-                    {/* Card 1 */}
                     <div className="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-0 opacity-50"></div>
                         <h4 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3 relative z-10">
@@ -81,7 +79,6 @@ const Pricing = () => {
                         </div>
                     </div>
 
-                    {/* Card 2 */}
                     <div className="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-50 rounded-bl-full -z-0 opacity-50"></div>
                         <h4 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3 relative z-10">
@@ -104,7 +101,6 @@ const Pricing = () => {
                         </div>
                     </div>
 
-                    {/* Card 3 - Wide */}
                     <div className="bg-slate-900 rounded-3xl p-8 shadow-2xl relative overflow-hidden lg:col-span-2 text-white">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full filter blur-[100px] opacity-20 -z-0"></div>
                         <h4 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 relative z-10">
@@ -113,7 +109,6 @@ const Pricing = () => {
                         </h4>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-                            {/* Barre */}
                             <div>
                                 <h5 className="text-blue-400 font-bold mb-4 border-b border-slate-700 pb-2">Totale Sur Barre</h5>
                                 <div className="space-y-4">
@@ -134,7 +129,6 @@ const Pricing = () => {
                                 </div>
                             </div>
 
-                            {/* Gouttiere */}
                             <div>
                                 <h5 className="text-blue-400 font-bold mb-4 border-b border-slate-700 pb-2">Gouttière</h5>
                                 <div className="space-y-4">
@@ -153,7 +147,6 @@ const Pricing = () => {
                                 </div>
                             </div>
 
-                            {/* CAD CAM */}
                             <div>
                                 <h5 className="text-blue-400 font-bold mb-4 border-b border-slate-700 pb-2">Support exocad</h5>
                                 <div className="space-y-4">

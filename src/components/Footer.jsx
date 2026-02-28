@@ -6,7 +6,6 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
-                    {/* Brand & Map */}
                     <div className="lg:col-span-2">
                         <div className="flex items-center mb-6">
                             <img src="/logo.png" alt="Labo Asnane Logo" className="h-14 w-auto" />
@@ -15,7 +14,6 @@ const Footer = () => {
                             Fournir des restaurations dentaires esthétiques et fonctionnelles haut de gamme avec une précision CAO-FAO de pointe.
                         </p>
 
-                        {/* Map Embed */}
                         <div className="w-full max-w-sm h-64 bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 relative group">
                             <iframe
                                 title="Laboratory Location"
@@ -31,7 +29,6 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Contact Numbers */}
                     <div>
                         <h4 className="text-white font-bold text-lg mb-6">Contactez-nous</h4>
                         <ul className="space-y-4">
@@ -62,7 +59,6 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Quick Links */}
                     <div>
                         <h4 className="text-white font-bold text-lg mb-6">Liens Rapides</h4>
                         <ul className="space-y-3">
@@ -76,7 +72,6 @@ const Footer = () => {
 
                 </div>
 
-                {/* Bottom Bar */}
                 <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-slate-500 text-sm text-center md:text-left">
                         &copy; {new Date().getFullYear()} Labo Asnane. Tous droits réservés.

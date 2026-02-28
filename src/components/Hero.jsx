@@ -3,7 +3,6 @@ import React from 'react';
 const Hero = () => {
     return (
         <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-slate-900">
-            {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
                     src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1920&q=80"
@@ -15,7 +14,6 @@ const Hero = () => {
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center">
 
-                {/* Text Content */}
                 <div className="w-full md:w-3/5 md:pr-12 animate-fade-in-up">
 
 
@@ -40,7 +38,6 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {/* Contact info floating card */}
                 <div className="w-full md:w-2/5 mt-16 md:mt-0 flex justify-end">
                     <div className="glass-dark p-8 rounded-3xl w-full max-w-md shadow-2xl border border-slate-700/50 backdrop-blur-xl animate-[fade-in-up_1s_ease-out_0.2s_forwards] opacity-0">
                         <div className="w-16 h-16 bg-blue-600/20 rounded-2xl flex items-center justify-center mb-6 border border-blue-500/30">

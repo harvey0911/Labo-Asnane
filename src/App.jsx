@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import Expertise3D from './components/Expertise3D';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 
@@ -12,6 +13,7 @@ function App() {
       <main>
         <Hero />
         <Services />
+        <Expertise3D />
         <Pricing />
       </main>
       <Footer />
