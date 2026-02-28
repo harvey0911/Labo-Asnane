@@ -37,7 +37,7 @@ const Footer = () => {
                         <ul className="space-y-4">
                             <li className="flex flex-col">
                                 <span className="text-slate-500 text-sm font-semibold mb-1 uppercase tracking-wider">Fixe</span>
-                                <span className="text-slate-300 font-medium text-lg hover:text-blue-400 transition-colors cursor-pointer">05.37.77.02.71</span>
+                                <span className="text-slate-300 font-medium text-lg hover:text-blue-400 transition-colors cursor-pointer">{import.meta.env.VITE_CONTACT_FIX || "05.37.77.02.71"}</span>
                             </li>
                             <li className="flex flex-col pt-2 opacity-10">
                                 <div className="w-full h-px bg-slate-700"></div>
@@ -45,9 +45,9 @@ const Footer = () => {
                             <li className="flex flex-col">
                                 <span className="text-slate-500 text-sm font-semibold mb-1 uppercase tracking-wider">Mobile / GSM</span>
                                 <div className="flex flex-col gap-1">
-                                    <span className="text-slate-300 font-medium text-lg hover:text-blue-400 transition-colors cursor-pointer">06.22.15.90.45</span>
-                                    <span className="text-slate-300 font-medium text-lg hover:text-blue-400 transition-colors cursor-pointer">06.61.44.49.49</span>
-                                    <span className="text-slate-300 font-medium text-lg hover:text-blue-400 transition-colors cursor-pointer">06.02.03.62.24</span>
+                                    <span className="text-slate-300 font-medium text-lg hover:text-blue-400 transition-colors cursor-pointer">{import.meta.env.VITE_CONTACT_GSM_1 || "06.61.44.49.49"}</span>
+                                    <span className="text-slate-300 font-medium text-lg hover:text-blue-400 transition-colors cursor-pointer">{import.meta.env.VITE_CONTACT_GSM_2 || "06.22.15.90.45"}</span>
+                                    <span className="text-slate-300 font-medium text-lg hover:text-blue-400 transition-colors cursor-pointer">{import.meta.env.VITE_CONTACT_GSM_3 || "06.02.03.62.24"}</span>
                                 </div>
                             </li>
                             <li className="flex flex-col pt-2 opacity-10">
@@ -55,9 +55,8 @@ const Footer = () => {
                             </li>
                             <li className="flex flex-col">
                                 <span className="text-slate-500 text-sm font-semibold mb-1 uppercase tracking-wider">Adresse</span>
-                                <address className="text-slate-300 font-medium not-italic leading-relaxed text-lg">
-                                    10, RUE DAYET IFRAH<br />
-                                    AGDAL - RABAT
+                                <address className="text-slate-300 font-medium not-italic leading-relaxed text-lg whitespace-pre-line">
+                                    {import.meta.env.VITE_CONTACT_ADDRESS?.replace(', ', '\n') || "10, RUE DAYET IFRAH\nAGDAL - RABAT"}
                                 </address>
                             </li>
                         </ul>

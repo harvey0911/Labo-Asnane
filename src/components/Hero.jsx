@@ -54,21 +54,20 @@ const Hero = () => {
                         <div className="space-y-4">
                             <div className="flex items-center gap-4 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
                                 <div className="text-blue-400 font-bold bg-blue-900/30 px-3 py-1 rounded-lg text-sm">FIX</div>
-                                <div className="text-white text-lg font-medium">05.37.77.02.71</div>
+                                <div className="text-white text-lg font-medium">{import.meta.env.VITE_CONTACT_FIX || "05.37.77.02.71"}</div>
                             </div>
                             <div className="flex flex-col gap-2 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
                                 <div className="flex items-center gap-4">
                                     <div className="text-cyan-400 font-bold bg-cyan-900/30 px-3 py-1 rounded-lg text-sm">GSM</div>
-                                    <div className="text-white text-lg font-medium">06.22.15.90.45</div>
+                                    <div className="text-white text-lg font-medium">{import.meta.env.VITE_CONTACT_GSM_1 || "06.61.44.49.49"}</div>
                                 </div>
-                                <div className="text-slate-300 pl-[4.5rem]">06.61.44.49.49</div>
-                                <div className="text-slate-300 pl-[4.5rem]">06.02.03.62.24</div>
+                                <div className="text-slate-300 pl-[4.5rem]">{import.meta.env.VITE_CONTACT_GSM_2 || "06.22.15.90.45"}</div>
+                                <div className="text-slate-300 pl-[4.5rem]">{import.meta.env.VITE_CONTACT_GSM_3 || "06.02.03.62.24"}</div>
                             </div>
                             <div className="flex items-start gap-4 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
                                 <div className="text-purple-400 font-bold bg-purple-900/30 px-3 py-1 rounded-lg text-sm">ADRESSE</div>
-                                <div className="text-white text-base font-medium leading-tight">
-                                    10, RUE DAYET IFRAH<br />
-                                    AGDAL - RABAT
+                                <div className="text-white text-base font-medium leading-tight whitespace-pre-line">
+                                    {import.meta.env.VITE_CONTACT_ADDRESS?.replace(', ', '\n') || "10, RUE DAYET IFRAH\nAGDAL - RABAT"}
                                 </div>
                             </div>
                         </div>
