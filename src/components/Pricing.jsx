@@ -1,5 +1,7 @@
 import React from 'react';
 
+const showPrices = import.meta.env.VITE_SHOW_PRICES === 'true';
+
 const PriceItem = ({ name, price, sub }) => (
     <div className="flex justify-between items-center py-4 border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors px-2 rounded-lg">
         <div className="flex flex-col">
@@ -7,8 +9,14 @@ const PriceItem = ({ name, price, sub }) => (
             {sub && <span className="text-sm text-slate-500">{sub}</span>}
         </div>
         <div className="flex items-center gap-2">
-            <span className="text-slate-400 text-sm">MAD</span>
-            <span className="text-blue-600 font-bold text-xl">{price}</span>
+            {!showPrices ? (
+                <span className="text-slate-400 font-bold text-xl px-4">-</span>
+            ) : (
+                <>
+                    <span className="text-slate-400 text-sm">MAD</span>
+                    <span className="text-blue-600 font-bold text-xl">{price}</span>
+                </>
+            )}
         </div>
     </div>
 );
@@ -53,10 +61,10 @@ const Pricing = () => {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="mb-16 flex flex-col md:flex-row justify-between items-end gap-6">
                     <div>
-                        <h2 className="text-sm font-bold text-blue-600 tracking-widest uppercase mb-3">Tarifs Transparents</h2>
+                        <h2 className="text-sm font-bold text-blue-600 tracking-widest uppercase mb-3">Tarifs</h2>
                         <h3 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Grille Tarifaire <span className="text-slate-400 font-normal">Professionnelle</span></h3>
                     </div>
-                    <p className="text-slate-500 max-w-md md:text-right font-medium">Une tarification standardisée pour des services de laboratoire dentaire de haute qualité, offrant le meilleur rapport qualité-prix pour les prothèses CAO-FAO avancées.</p>
+                    <p className="text-slate-500 max-w-md md:text-right font-medium">Une tarification transparente pour des services de laboratoire dentaire de haute qualité.</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -117,14 +125,26 @@ const Pricing = () => {
                                             <div className="font-medium text-slate-200">Pilotis</div>
                                             <div className="text-xs text-slate-400">avec dents Ivoclar</div>
                                         </div>
-                                        <div className="font-bold text-xl text-white">{prices.advanced.barre.pilotis} <span className="text-xs text-slate-500">MAD (EA)</span></div>
+                                        <div className="font-bold text-xl text-white">
+                                            {!showPrices ? (
+                                                <span className="text-slate-400 px-4">-</span>
+                                            ) : (
+                                                <>{prices.advanced.barre.pilotis} <span className="text-xs text-slate-500">MAD (EA)</span></>
+                                            )}
+                                        </div>
                                     </div>
                                     <div className="flex justify-between items-start">
                                         <div>
                                             <div className="font-medium text-slate-200">D'Acker-man</div>
                                             <div className="text-xs text-slate-400">avec dents Ivoclar</div>
                                         </div>
-                                        <div className="font-bold text-xl text-white">{prices.advanced.barre.ackerman} <span className="text-xs text-slate-500">MAD (EA)</span></div>
+                                        <div className="font-bold text-xl text-white">
+                                            {!showPrices ? (
+                                                <span className="text-slate-400 px-4">-</span>
+                                            ) : (
+                                                <>{prices.advanced.barre.ackerman} <span className="text-xs text-slate-500">MAD (EA)</span></>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -134,15 +154,27 @@ const Pricing = () => {
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-center">
                                         <span className="font-medium text-slate-200">Les aligneurs</span>
-                                        <span className="font-bold text-xl text-white">{prices.advanced.gouttiere.aligners}</span>
+                                        <span className="font-bold text-xl text-white">
+                                            {!showPrices ? (
+                                                <span className="text-slate-400 px-4">-</span>
+                                            ) : prices.advanced.gouttiere.aligners}
+                                        </span>
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <span className="font-medium text-slate-200">Gouttiers contention</span>
-                                        <span className="font-bold text-xl text-white">{prices.advanced.gouttiere.contention}</span>
+                                        <span className="font-bold text-xl text-white">
+                                            {!showPrices ? (
+                                                <span className="text-slate-400 px-4">-</span>
+                                            ) : prices.advanced.gouttiere.contention}
+                                        </span>
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <span className="font-medium text-slate-200">Gouttiere blanchissem</span>
-                                        <span className="font-bold text-xl text-white">{prices.advanced.gouttiere.blanchissem}</span>
+                                        <span className="font-bold text-xl text-white">
+                                            {!showPrices ? (
+                                                <span className="text-slate-400 px-4">-</span>
+                                            ) : prices.advanced.gouttiere.blanchissem}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -152,11 +184,19 @@ const Pricing = () => {
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-start">
                                         <span className="font-medium text-slate-200">Montage Totale Ivoclar<br /><span className="text-sm font-normal text-slate-400">Haut et bas</span></span>
-                                        <span className="font-bold text-xl text-white">{prices.advanced.cadcam.totaleIvoclar}</span>
+                                        <span className="font-bold text-xl text-white">
+                                            {!showPrices ? (
+                                                <span className="text-slate-400 px-4">-</span>
+                                            ) : prices.advanced.cadcam.totaleIvoclar}
+                                        </span>
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <span className="font-medium text-slate-200">Montage Totale</span>
-                                        <span className="font-bold text-xl text-white">{prices.advanced.cadcam.totaleGeneric}</span>
+                                        <span className="font-bold text-xl text-white">
+                                            {!showPrices ? (
+                                                <span className="text-slate-400 px-4">-</span>
+                                            ) : prices.advanced.cadcam.totaleGeneric}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
