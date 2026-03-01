@@ -1,115 +1,129 @@
-import React, { Suspense, useRef } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { Stage, PerspectiveCamera, Html, useProgress } from '@react-three/drei';
-import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
-
-const Model = ({ url }) => {
-    const geom = useLoader(STLLoader, url);
-    const meshRef = useRef();
-
-    React.useMemo(() => {
-        if (geom) {
-            geom.computeVertexNormals();
-            geom.center();
-        }
-    }, [geom]);
-
-    useFrame(() => {
-        if (meshRef.current) {
-            meshRef.current.rotation.y += 0.005;
-        }
-    });
-
-    return (
-        <mesh ref={meshRef} castShadow receiveShadow>
-            <primitive object={geom} attach="geometry" />
-            <meshStandardMaterial
-                color="#f8fafc"
-                roughness={0.4}
-                metalness={0.1}
-            />
-        </mesh>
-    );
-};
+import React, { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { Stage, PerspectiveCamera, Html, useProgress, Float, Environment } from '@react-three/drei';
+import { ToothModel, ImplantModel, CrownModel } from './ThreeD/DentalExpertiseModels';
 
 const Loader = () => {
     const { progress } = useProgress();
     return (
         <Html center>
-            <div className="flex flex-col items-center gap-4 w-64">
-                <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                    <div
-                        className="bg-blue-500 h-full transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.5)]"
-                        style={{ width: `${progress}%` }}
-                    ></div>
-                </div>
-                <span className="text-slate-400 font-bold tracking-[0.2em] text-[10px] uppercase">
-                    Initialisation {Math.round(progress)}%
-                </span>
+            <div className="flex flex-col items-center gap-2">
+                <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{Math.round(progress)}%</span>
             </div>
         </Html>
     );
 };
 
-const Expertise3D = () => {
+const ModelCard = ({ title, subtitle, description, model, colorClass }) => {
     return (
-        <section id="expertise" className="py-24 bg-[#0f172a] relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(30,58,138,0.1),transparent)] pointer-events-none"></div>
+        <div className="group relative flex flex-col h-full bg-[#020617] rounded-[2.5rem] border border-slate-800/50 hover:border-blue-500/30 transition-all duration-500 overflow-hidden shadow-2xl">
+            {/* 3D Canvas Container */}
+            <div className="h-[300px] w-full relative">
+                <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 5], fov: 40 }}>
+                    <Suspense fallback={<Loader />}>
+                        <Stage environment="city" intensity={0.5} contactShadow={{ opacity: 0.2, blur: 2 }}>
+                            <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
+                                {model}
+                            </Float>
+                        </Stage>
+                        <Environment preset="night" />
+                    </Suspense>
+                </Canvas>
+
+                {/* Overlay Badge */}
+                <div className="absolute top-6 left-6 z-10">
+                    <div className="flex items-center gap-2 bg-slate-900/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/5 shadow-xl">
+                        <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${colorClass}`}></div>
+                        <span className="text-white text-[9px] font-bold uppercase tracking-[0.15em]">{subtitle}</span>
+                    </div>
+                </div>
+            </div>
+
+            {/* Content Section */}
+            <div className="p-8 pt-0 flex flex-col items-center text-center">
+                <h4 className="text-2xl font-black text-white mb-3 tracking-tight group-hover:text-blue-400 transition-colors uppercase">
+                    {title}
+                </h4>
+                <p className="text-slate-400 text-sm leading-relaxed max-w-[250px]">
+                    {description}
+                </p>
+
+                <div className="mt-6 flex items-center gap-2 text-[10px] font-bold text-blue-500 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                    <span>Explorer l'innovation</span>
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const Expertise3D = () => {
+    const expertiseItems = [
+        {
+            id: 'tooth',
+            title: 'Diagnostic',
+            subtitle: 'Scan Intraoral 8K',
+            description: 'Capture numérique haute fidélité pour un diagnostic d’une précision millimétrique.',
+            model: <ToothModel />,
+            colorClass: 'bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]'
+        },
+        {
+            id: 'implant',
+            title: 'Implantologie',
+            subtitle: 'Conception CAO/FAO',
+            description: 'Solutions d’implants sur mesure avec intégration osseuse optimisée par algorithme.',
+            model: <ImplantModel />,
+            colorClass: 'bg-cyan-500 shadow-[0_0_8px_rgba(34,211,238,0.8)]'
+        },
+        {
+            id: 'crown',
+            title: 'Restauration',
+            subtitle: 'Esthétique Premium',
+            description: 'Couronnes et facettes en céramique pressée alliant robustesse et translucidité naturelle.',
+            model: <CrownModel />,
+            colorClass: 'bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]'
+        }
+    ];
+
+    return (
+        <section id="expertise" className="py-32 bg-[#0f172a] relative overflow-hidden">
+            {/* Decorative Background Elements */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,rgba(37,99,235,0.05),transparent_40%)] pointer-events-none"></div>
+            <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,rgba(168,85,247,0.05),transparent_40%)] pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="text-center mb-16 pt-8">
-                    <h2 className="text-sm font-bold text-blue-500 tracking-widest uppercase mb-4">Innovation Digitale</h2>
-                    <h3 className="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
-                        Notre <span className="text-slate-400">Expertise</span> Digitale
+                <div className="text-center mb-20 lg:mb-24">
+                    <h2 className="text-sm font-bold text-blue-500 tracking-[0.3em] uppercase mb-4 animate-pulse">Standard Excellence</h2>
+                    <h3 className="text-5xl md:text-6xl font-black text-white tracking-tighter leading-tight">
+                        Expertise <span className="text-slate-500/50">Tridimensionnelle</span>
                     </h3>
+                    <p className="mt-6 text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
+                        L'alliance de la technologie de pointe et de l'artisanat de précision pour redéfinir les standards de la dentisterie moderne.
+                    </p>
                 </div>
 
-                <div className="h-[500px] md:h-[650px] w-full rounded-[2.5rem] bg-[#020617] border border-slate-800/50 shadow-2xl relative overflow-hidden">
-                    <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 4.5], fov: 40 }}>
-                        <color attach="background" args={['#020617']} />
-
-                        <ambientLight intensity={1.5} />
-                        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} castShadow />
-                        <pointLight position={[-10, -10, -10]} intensity={1} color="#3b82f6" />
-                        <pointLight position={[0, 5, 5]} intensity={1.5} />
-
-                        <Suspense fallback={<Loader />}>
-                            <Stage environment="studio" intensity={0.8} contactShadow={{ opacity: 0.3, blur: 2 }}>
-                                <Model url="/src/assets/dental-decimated.stl" />
-                            </Stage>
-                        </Suspense>
-                    </Canvas>
-
-                    <div className="absolute top-8 left-8 z-20 pointer-events-none">
-                        <div className="flex items-center gap-3 bg-slate-900/40 backdrop-blur-xl px-4 py-2 rounded-full border border-white/5 shadow-2xl">
-                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div>
-                            <span className="text-white/80 text-[10px] font-bold uppercase tracking-[0.2em]">Scan Intraoral HP</span>
-                        </div>
-                    </div>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12">
+                    {expertiseItems.map((item) => (
+                        <ModelCard
+                            key={item.id}
+                            title={item.title}
+                            subtitle={item.subtitle}
+                            description={item.description}
+                            model={item.model}
+                            colorClass={item.colorClass}
+                        />
+                    ))}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-                    <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] transition-all duration-500 group">
-                        <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        </div>
-                        <h4 className="text-white font-bold mb-3">Haute Précision</h4>
-                        <p className="text-slate-500 text-sm leading-relaxed">Adaptation prothétique parfaite grâce à la capture de détails microscopiques.</p>
-                    </div>
-                    <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] transition-all duration-500 group">
-                        <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                        </div>
-                        <h4 className="text-white font-bold mb-3">Flux Numérique</h4>
-                        <p className="text-slate-500 text-sm leading-relaxed">Intégration native avec exocad pour optimiser chaque étape de la conception.</p>
-                    </div>
-                    <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] transition-all duration-500 group">
-                        <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <svg className="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                        </div>
-                        <h4 className="text-white font-bold mb-3">Visualisation</h4>
-                        <p className="text-slate-500 text-sm leading-relaxed">Validation pré-fabrication en temps réel pour garantir l'esthétique finale.</p>
-                    </div>
+                {/* Tech Badges Footer */}
+                <div className="mt-24 flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
+                    <span className="text-white font-black text-2xl tracking-tighter italic">EXOCAD</span>
+                    <span className="text-white font-black text-2xl tracking-tighter italic">3SHAPE</span>
+                    <span className="text-white font-black text-2xl tracking-tighter italic">VITA</span>
+                    <span className="text-white font-black text-2xl tracking-tighter italic">IVOCLAR</span>
                 </div>
             </div>
         </section>
