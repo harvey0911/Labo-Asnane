@@ -11,7 +11,7 @@ const Footer = () => {
                             <img src="/logo.png" alt="Labo Asnane Logo" className="h-14 w-auto" />
                         </div>
                         <p className="text-slate-400 mb-8 max-w-sm">
-                            Fournir des restaurations dentaires esthétiques et fonctionnelles haut de gamme avec une précision CAO-FAO de pointe.
+                            Votre partenaire de confiance pour des prothèses dentaires de haute précision, alliant innovation numérique et excellence esthétique.
                         </p>
 
                         <div className="w-full max-w-sm h-64 bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 relative group">
@@ -56,6 +56,13 @@ const Footer = () => {
                                     {import.meta.env.VITE_CONTACT_ADDRESS?.replace(', ', '\n') || "10, RUE DAYET IFRAH\nAGDAL - RABAT"}
                                 </address>
                             </li>
+                            <li className="flex flex-col pt-2 opacity-10">
+                                <div className="w-full h-px bg-slate-700"></div>
+                            </li>
+                            <li className="flex flex-col">
+                                <span className="text-slate-500 text-sm font-semibold mb-1 uppercase tracking-wider">E-mail</span>
+                                <a href="mailto:laboasnane@gmail.com" className="text-slate-300 font-medium text-lg hover:text-blue-400 transition-colors">laboasnane@gmail.com</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -64,7 +71,7 @@ const Footer = () => {
                         <ul className="space-y-3">
                             <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Accueil</a></li>
                             <li><a href="#services" className="text-slate-400 hover:text-white transition-colors">Nos Services</a></li>
-                            <li><a href="#expertise" className="text-slate-400 hover:text-white transition-colors">Expertise</a></li>
+                            <li><a href="#echantillons" className="text-slate-400 hover:text-white transition-colors">Échantillons</a></li>
                             <li><a href="#pricing" className="text-slate-400 hover:text-white transition-colors">Grille Tarifaire</a></li>
                             <li><a href="#" className="text-slate-400 hover:text-white transition-colors">Conditions d'Utilisation</a></li>
                         </ul>
@@ -77,13 +84,13 @@ const Footer = () => {
                         &copy; {new Date().getFullYear()} Labo Asnane. Tous droits réservés.
                     </p>
                     <div className="flex gap-4">
-                        <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
+                        <a href="https://www.facebook.com/profile.php?id=61585137891792" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
                             <div className="w-4 h-4 bg-current opacity-80" style={{ maskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/facebook.svg')", maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/facebook.svg')", WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }}></div>
                         </a>
                         <a href="https://www.instagram.com/labo_asnane?igsh=MW5kd2hmZHJqbGJ2" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-gradient-to-tr hover:from-purple-500 hover:to-orange-500 hover:text-white transition-all">
                             <div className="w-4 h-4 bg-current opacity-80" style={{ maskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg')", maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg')", WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }}></div>
                         </a>
-                        <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-700 hover:text-white transition-all">
+                        <a href="https://www.linkedin.com/in/laboratoire-asnane-a5a30b3b4/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-700 hover:text-white transition-all">
                             <div className="w-4 h-4 bg-current opacity-80" style={{ maskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg')", maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: "url('https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg')", WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }}></div>
                         </a>
                     </div>
